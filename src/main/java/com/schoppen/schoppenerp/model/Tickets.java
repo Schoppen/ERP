@@ -14,7 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Tickets {
+public class Tickets extends MedTicket{
 
 	@Id
 	@GeneratedValue

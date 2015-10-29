@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Usuarios {
+public class Usuarios extends MedUser{
 	
 	@Id
 	private String cuenta;
@@ -32,6 +32,9 @@ public class Usuarios {
 	
 	@Column(nullable=false)
 	private Boolean activo;
+	
+	@Column(nullable=false)
+	private String rol;
 
 	@OneToMany(mappedBy="empleado")
 	private Set<Tickets> tickets_gestionados = new HashSet<Tickets>();
@@ -91,5 +94,29 @@ public class Usuarios {
 
 	public void setActivo(Boolean activo) {
 		this.activo = activo;
+	}
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
+	public Set<Tickets> getTickets_gestionados() {
+		return tickets_gestionados;
+	}
+
+	public void setTickets_gestionados(Set<Tickets> tickets_gestionados) {
+		this.tickets_gestionados = tickets_gestionados;
+	}
+
+	public Set<Pedidos> getPedidos_gestionados() {
+		return pedidos_gestionados;
+	}
+
+	public void setPedidos_gestionados(Set<Pedidos> pedidos_gestionados) {
+		this.pedidos_gestionados = pedidos_gestionados;
 	}
 }

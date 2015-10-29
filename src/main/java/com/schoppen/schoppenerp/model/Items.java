@@ -1,5 +1,6 @@
 package com.schoppen.schoppenerp.model;
 
+import java.sql.Blob;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,7 +22,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorColumn(name="tipo", discriminatorType = DiscriminatorType.STRING)
-public class Items {
+public class Items extends MedItem{
 
 	@Id
 	@GeneratedValue
@@ -63,6 +64,14 @@ public class Items {
 	@ManyToOne
 	@JoinColumn(name="id_tamano")
 	private Tamanos tamano;
+	
+	private Blob ico_img;
+	
+	private Blob prev_img;
+	
+	private Blob view_img;
+	
+	private Blob orig_img;
 	
 	@OneToMany(mappedBy="item_agregado")
 	private Set<Pedidos> pedidos_incluido = new HashSet<Pedidos>();
@@ -170,5 +179,53 @@ public class Items {
 
 	public void setId_item(Long id_item) {
 		this.id_item = id_item;
+	}
+
+	public double getPvp() {
+		return pvp;
+	}
+
+	public void setPvp(double pvp) {
+		this.pvp = pvp;
+	}
+
+	public Blob getView_img() {
+		return view_img;
+	}
+
+	public void setView_img(Blob view_img) {
+		this.view_img = view_img;
+	}
+
+	public Blob getOrig_img() {
+		return orig_img;
+	}
+
+	public void setOrig_img(Blob orig_img) {
+		this.orig_img = orig_img;
+	}
+
+	public Set<Pedidos> getPedidos_incluido() {
+		return pedidos_incluido;
+	}
+
+	public void setPedidos_incluido(Set<Pedidos> pedidos_incluido) {
+		this.pedidos_incluido = pedidos_incluido;
+	}
+
+	public Blob getIco_img() {
+		return ico_img;
+	}
+
+	public void setIco_img(Blob ico_img) {
+		this.ico_img = ico_img;
+	}
+
+	public Blob getPrev_img() {
+		return prev_img;
+	}
+
+	public void setPrev_img(Blob prev_img) {
+		this.prev_img = prev_img;
 	}	
 }

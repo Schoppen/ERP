@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Impuestos {
 	
@@ -22,6 +24,7 @@ public class Impuestos {
 	@Column(nullable=false)
 	private float valor;
 
+	@JsonBackReference
 	@OneToMany(mappedBy="impuestos")
 	private Set<Items> items_relacionados = new HashSet<Items>();
 	

@@ -4,9 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,14 +13,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Mesas {
+public class Mesas extends LightTable{
 
 	@Id
-	@GeneratedValue
-	private Long id_mesa;
-	
-	@Column(nullable=false)
-	private int num_mesa;
+	private Long num_mesa;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha_llegada_cliente;
@@ -41,24 +35,17 @@ public class Mesas {
 	
 	@OneToMany(mappedBy="mesa_ocupada")
 	private Set<Tickets> tickets_relacionados = new HashSet<Tickets>();
-	
+
 	
 	
 	// **** GETTERS & SETTERS **** \\
-	
-	public Long getId_mesa() {
-		return id_mesa;
-	}
 
-	public void setId_mesa(Long id_mesa) {
-		this.id_mesa = id_mesa;
-	}
 
-	public int getNum_mesa() {
+	public Long getNum_mesa() {
 		return num_mesa;
 	}
 
-	public void setNum_mesa(int num_mesa) {
+	public void setNum_mesa(Long num_mesa) {
 		this.num_mesa = num_mesa;
 	}
 
@@ -109,4 +96,5 @@ public class Mesas {
 	public void setTickets_relacionados(Set<Tickets> tickets_relacionados) {
 		this.tickets_relacionados = tickets_relacionados;
 	}
+
 }
